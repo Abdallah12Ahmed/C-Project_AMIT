@@ -6,4 +6,4 @@
 void SDB_action(uint8 choice);
 void SDB_APP(void);
 
-#endif // SDBAPP_H
+#endif
