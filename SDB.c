@@ -29,6 +29,11 @@ bool SDB_AddEntry(uint32 id, uint32 year, uint32 c1_id, uint32 c1_grade, uint32 
 }
 
 void SDB_DeleteEntry(uint32 id) {
+    if (used_size <= 3) {
+        printf("Cannot delete: Minimum 3 students required in the database.\n");
+        return;
+    }
+    
     for (uint8 i = 0; i < used_size; i++) {
         if (database[i].Student_ID == id) {
             for (uint8 j = i; j < used_size - 1; j++) {
