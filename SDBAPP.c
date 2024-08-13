@@ -11,6 +11,10 @@ void SDB_action(uint8 choice) {
         case 1:
             printf("Enter ID: ");
             scanf("%u",&id);
+            if (SDB_IsIdExist(id)) {
+                printf("Error: This ID has already been entered.\n");
+                break;
+            }
             printf("Year: ");
             scanf("%u",&year);
             printf("Course1 ID: ");
