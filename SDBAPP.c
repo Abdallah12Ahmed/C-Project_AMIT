@@ -9,6 +9,10 @@ void SDB_action(uint8 choice) {
 
     switch (choice) {
         case 1:
+        if (SDB_IsFull()) {
+                printf("Error: Cannot add more students. The database is full.\n");
+                return;  
+            }
             printf("Enter ID: ");
             scanf("%u",&id);
             if (SDB_IsIdExist(id)) {
