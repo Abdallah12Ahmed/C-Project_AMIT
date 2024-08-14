@@ -65,7 +65,6 @@ void SDB_action(uint8 choice) {
             printf("Enter ID:\n");
             scanf("%u", &id);
             SDB_DeleteEntry(id);
-            printf("Student deleted (if ID was found).\n");
             break;
         case 7:
             if (SDB_IsFull()) {

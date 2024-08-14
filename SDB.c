@@ -33,6 +33,9 @@ void SDB_DeleteEntry(uint32 id) {
         printf("Cannot delete: Minimum 3 students required in the database.\n");
         return;
     }
+    else { 
+        printf("Student deleted (if ID was found).\n");  
+    }
     
     for (uint8 i = 0; i < used_size; i++) {
         if (database[i].Student_ID == id) {
