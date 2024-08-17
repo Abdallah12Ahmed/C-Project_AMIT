@@ -3,15 +3,15 @@
 
 static student database[MAX_STUDENTS];
 static uint8 used_size = 0;
-
+// check is full or not 
 bool SDB_IsFull(void) {
     return (used_size >= MAX_STUDENTS);
 }
-
+// show the number of students entered
 uint8 SDB_GetUsedSize(void) {
     return used_size;
 }
-
+// to add student info 
 bool SDB_AddEntry(uint32 id, uint32 year, uint32 c1_id, uint32 c1_grade, uint32 c2_id, uint32 c2_grade, uint32 c3_id, uint32 c3_grade) {
     if (SDB_IsFull()) {
         return false;
@@ -27,9 +27,10 @@ bool SDB_AddEntry(uint32 id, uint32 year, uint32 c1_id, uint32 c1_grade, uint32 
     used_size++;
     return true;
 }
-
+// to delete the student data
 void SDB_DeleteEntry(uint32 id) {
     if (used_size <= 3) {
+        // if the number of students less than 3 it will not delete
         printf("Cannot delete: Minimum 3 students required in the database.\n");
         return;
     }
@@ -47,7 +48,7 @@ void SDB_DeleteEntry(uint32 id) {
         }
     }
 }
-
+// show the data of student 
 bool SDB_ReadEntry(uint32 id) {
     for (uint8 i = 0; i < used_size; i++) {
         if (database[i].Student_ID == id) {
@@ -61,14 +62,14 @@ bool SDB_ReadEntry(uint32 id) {
     }
     return false;
 }
-
+// show the IDs of students 
 void SDB_GetList(uint8* count, uint32* list) {
     *count = used_size;
     for (uint8 i = 0; i < used_size; i++) {
         list[i] = database[i].Student_ID;
     }
 }
-
+// check of the ID entered or not  
 bool SDB_IsIdExist(uint32 id) {
     for (uint8 i = 0; i < used_size; i++) {
         if (database[i].Student_ID == id) {

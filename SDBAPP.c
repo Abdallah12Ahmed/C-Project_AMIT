@@ -9,12 +9,15 @@ void SDB_action(uint8 choice) {
 
     switch (choice) {
         case 1:
+        // check if the database is full or not
         if (SDB_IsFull()) {
                 printf("Error: Cannot add more students. The database is full.\n");
                 return;  
             }
+            // user enter the ID
             printf("Enter ID: ");
             scanf("%u",&id);
+            // check if the ID entered already or not
             if (SDB_IsIdExist(id)) {
                 printf("Error: This ID has already been entered.\n");
                 break;
@@ -40,9 +43,11 @@ void SDB_action(uint8 choice) {
             }
             break;
         case 2:
+            // show the number of students
             printf("Used Size: %u\n", SDB_GetUsedSize());
             break;
         case 3:
+            // show the data of student 
             printf("Enter ID:\n");
             scanf("%u", &id);
             if (!SDB_ReadEntry(id)) {
@@ -50,6 +55,7 @@ void SDB_action(uint8 choice) {
             }
             break;
         case 4:
+            // show the IDs of student 
             SDB_GetList(&count, list);
             printf("Student IDs:\n");
             for (uint8 i = 0; i < count; i++) {
@@ -57,6 +63,7 @@ void SDB_action(uint8 choice) {
             }
             break;
         case 5:
+            // check if the ID 
             printf("Enter ID:\n");
             scanf("%u", &id);
             if (SDB_IsIdExist(id)) {
@@ -66,11 +73,13 @@ void SDB_action(uint8 choice) {
             }
             break;
         case 6:
+            // to delete the student data 
             printf("Enter ID:\n");
             scanf("%u", &id);
             SDB_DeleteEntry(id);
             break;
         case 7:
+            // check of database is full or not 
             if (SDB_IsFull()) {
                 printf("Database is full.\n");
             } else {
@@ -78,9 +87,11 @@ void SDB_action(uint8 choice) {
             }
             break;
         case 0:
+            // exit the program 
             printf("Exiting...\n");
             break;
         default:
+            // if user enter ivalid number 
             printf("Invalid choice.\n");
             break;
     }
@@ -88,9 +99,10 @@ void SDB_action(uint8 choice) {
 
 void SDB_APP(void) {
     uint8 choice;
+    // show the menu to user 
     do {
         printf("Choose an option:\n1. Add Entry\n2. Get Used Size\n3. Read Student Data\n4. Get List of IDs\n5. Check ID Existence\n6. Delete Entry\n7. Check if Database is Full\n0. Exit\n");
         scanf("%hhu", &choice);
         SDB_action(choice);
-    } while (choice != 0);
+    } while (choice != 0); // keep in the program until user enter 0
 }
