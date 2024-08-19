@@ -11,7 +11,7 @@ void SDB_action(uint8 choice) {
         case 1:
         // check if the database is full or not
         if (SDB_IsFull()) {
-                printf("Error: Cannot add more students. The database is full.\n");
+                printf("Error: Cannot add more students. The database is full \n");
                 return;  
             }
             // user enter the ID
@@ -19,7 +19,7 @@ void SDB_action(uint8 choice) {
             scanf("%u",&id);
             // check if the ID entered already or not
             if (SDB_IsIdExist(id)) {
-                printf("Error: This ID has already been entered.\n");
+                printf("Error: This ID has already been entered \n");
                 break;
             }
             printf("Year: ");
@@ -37,9 +37,9 @@ void SDB_action(uint8 choice) {
             printf("Course3 Grade: ");
             scanf("%u",&c3_grade);
             if (SDB_AddEntry(id, year, c1_id, c1_grade, c2_id, c2_grade, c3_id, c3_grade)) {
-                printf("Student added successfully.\n");
+                printf("Student added successfully\n");
             } else {
-                printf("Failed to add student.\n");
+                printf("Failed to add student\n");
             }
             break;
         case 2:
@@ -48,10 +48,10 @@ void SDB_action(uint8 choice) {
             break;
         case 3:
             // show the data of student 
-            printf("Enter ID:\n");
+            printf("Enter ID: ");
             scanf("%u", &id);
             if (!SDB_ReadEntry(id)) {
-                printf("Student not found.\n");
+                printf("Student not found\n");
             }
             break;
         case 4:
@@ -64,35 +64,35 @@ void SDB_action(uint8 choice) {
             break;
         case 5:
             // check if the ID 
-            printf("Enter ID:\n");
+            printf("Enter ID: ");
             scanf("%u", &id);
             if (SDB_IsIdExist(id)) {
-                printf("ID exists.\n");
+                printf("ID exists\n");
             } else {
-                printf("ID does not exist.\n");
+                printf("ID does not exist\n");
             }
             break;
         case 6:
             // to delete the student data 
-            printf("Enter ID:\n");
+            printf("Enter ID: ");
             scanf("%u", &id);
             SDB_DeleteEntry(id);
             break;
         case 7:
             // check of database is full or not 
             if (SDB_IsFull()) {
-                printf("Database is full.\n");
+                printf("Database is full\n");
             } else {
-                printf("Database is not full.\n");
+                printf("Database is not full\n");
             }
             break;
         case 0:
             // exit the program 
-            printf("Exiting...\n");
+            printf("Exiting \n");
             break;
         default:
             // if user enter ivalid number 
-            printf("Invalid choice.\n");
+            printf("Invalid choice \n");
             break;
     }
 }
